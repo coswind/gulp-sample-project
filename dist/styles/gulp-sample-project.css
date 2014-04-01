@@ -1,0 +1,23 @@
+* {}
+
+input {
+    font-family: monaco;
+}
+
+.box {
+    display: flex;
+}
+
+.trans {
+    transition: transform 1s
+}
+
+.flex {
+    position: absolute;
+    display: flex;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}

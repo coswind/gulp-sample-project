@@ -1,0 +1,18 @@
+* {}
+
+input {
+    font-family: monaco;
+}
+
+.box {
+    display: flex;
+}
+
+.trans {
+    transition: transform 1s
+}
+
+.flex {
+    position: absolute;
+    display: flex;
+}
