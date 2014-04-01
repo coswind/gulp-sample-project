@@ -48,11 +48,11 @@ gulp.task('tag', function() {
     var version = 'v' + pkg.version;
     var message = 'Release ' + version;
 
-    return gulp.src('./')
+    gulp.src('./')
         .pipe(git.commit(message))
         .pipe(git.tag(version, message))
         .pipe(git.push('origin', 'master', '--tags'))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('build', ['js', 'css'], function() {
