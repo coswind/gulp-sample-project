@@ -7,7 +7,11 @@
     "gulp": "~3.6.0",
     "gulp-concat": "~2.2.0",
     "gulp-jade": "~0.4.2",
-    "gulp-uglify": "~0.2.1"
+    "gulp-uglify": "~0.2.1",
+    "gulp-jshint": "~1.5.2",
+    "gulp-clean": "~0.2.4",
+    "gulp-newer": "~0.3.0",
+    "gulp-changed": "~0.3.0"
   },
   "devDependencies": {
     "gulp": "~3.6.0",
