@@ -11,7 +11,8 @@
     "gulp-jshint": "~1.5.2",
     "gulp-clean": "~0.2.4",
     "gulp-newer": "~0.3.0",
-    "gulp-changed": "~0.3.0"
+    "gulp-changed": "~0.3.0",
+    "gulp-coffee": "~1.4.1"
   },
   "devDependencies": {
     "gulp": "~3.6.0",

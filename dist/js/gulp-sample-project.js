@@ -1,6 +1,9 @@
-console.log('a');
-console.log('aa');
+console.log('hello');
+
+console.log('world');
 
 console.log('b');
+
 console.log('bb');
+
 console.log('bbb');
