@@ -48,7 +48,7 @@ gulp.task('tag', function() {
     var version = 'v' + pkg.version;
     var message = 'Release ' + version;
 
-    gulp.src('./')
+    return gulp.src('./')
         .pipe(git.commit(message))
         .pipe(git.tag(version, message))
         .pipe(git.push('origin', 'master', '--tags'))
