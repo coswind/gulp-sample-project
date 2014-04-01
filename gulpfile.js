@@ -7,6 +7,7 @@ var size = require('gulp-size');
 var concat = require('gulp-concat');
 var autoprefix = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
+var git = require('gulp-git');
 
 gulp.task('default', function() {
 });
@@ -40,6 +41,18 @@ gulp.task('css', function() {
         .pipe(rename(pkg.name + '.min.css'))
         .pipe(size())
         .pipe(gulp.dest('dist/styles'));
+});
+
+// Tag.
+gulp.task('tag', function() {
+    var version = 'v' + pkg.version;
+    var message = 'Release ' + version;
+
+    gulp.src('./')
+        .pipe(git.commit(message))
+        .pipe(git.tag(v, message))
+        .pipe(git.push('origin', 'master', '--tags'))
+        .pipe(gulp.dest('./'))
 });
 
 gulp.task('build', ['js', 'css'], function() {
