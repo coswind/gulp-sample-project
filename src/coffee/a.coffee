@@ -1,2 +1,2 @@
-console.log 'hello'
-console.log 'world'
+exports.a = ->
+    console.log 'hello wolrd'

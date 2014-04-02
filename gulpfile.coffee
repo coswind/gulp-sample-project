@@ -9,7 +9,7 @@ concat = require 'gulp-concat'
 autoprefixer = require 'gulp-autoprefixer'
 minifyCSS = require 'gulp-minify-css'
 changed = require 'gulp-changed'
-coffee = require 'gulp-coffee'
+browserify = require 'gulp-browserify'
 
 gulp.task 'clean', ->
     gulp.src 'dist', { read: false }
@@ -19,17 +19,14 @@ gulp.task 'lint', ->
     gulp.src 'src/js/**'
         .pipe jshint()
 
-gulp.task 'coffee', ->
-    gulp.src 'src/coffee/**'
-        .pipe (coffee bare: true)
-        .on 'error', console.log
-        .pipe (gulp.dest 'src/js')
-
-gulp.task 'js', ['coffee', 'lint'], ->
-    gulp.src 'src/js/**'
-        .pipe (concat pkg.name + '.js')
-        .pipe (gulp.dest 'dist/js')
-        .pipe (rename pkg.name + '.min.js')
+gulp.task 'coffee', ['lint'], ->
+    gulp.src 'src/coffee/app.coffee', { read: false }
+        .pipe (browserify {
+                insertGlobals: true,
+                transform: ['coffeeify'],
+                extensions: ['.coffee']
+            })
+        .pipe (rename 'app.min.js')
         .pipe uglify()
         .pipe size()
         .pipe (gulp.dest 'dist/js')
@@ -46,8 +43,8 @@ gulp.task 'css', ->
 
 
 gulp.task 'watch', ->
-    gulp.watch 'src/coffee/**', ['js']
-    gulp.watch 'src/css/**', ['css']
+    gulp.watch 'src/coffee/**', ['coffee']
+    # gulp.watch 'src/css/**', ['css']
 
 gulp.task 'default', ['watch']
 
