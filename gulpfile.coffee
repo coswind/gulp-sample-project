@@ -34,7 +34,6 @@ gulp.task 'coffee', ['lint'], ->
 gulp.task 'css', ->
     gulp.src 'src/css/**'
         .pipe (concat pkg.name + '.css')
-        .pipe (gulp.dest 'dist/css')
         .pipe (autoprefixer "last 1 version", "> 1%", "ie 8", "ie 7")
         .pipe minifyCSS()
         .pipe (rename pkg.name + '.min.css')
@@ -48,4 +47,4 @@ gulp.task 'watch', ->
 
 gulp.task 'default', ['watch']
 
-gulp.task 'build', ['js', 'css']
+gulp.task 'build', ['coffee', 'css']
